@@ -1,0 +1,24 @@
+{
+    "name": "flappylogin",
+    "version": "1.0.0",
+    "description": "Log in with Flappy Bird!",
+    "main": "index.js",
+    "scripts": {
+        "start": "node index"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/J-Meow/flappylogin.git"
+    },
+    "author": "Jmeow",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/J-Meow/flappylogin/issues"
+    },
+    "homepage": "https://github.com/J-Meow/flappylogin#readme",
+    "dependencies": {
+        "express": "^5.1.0",
+        "postgres": "^3.4.7"
+    },
+    "type": "module"
+}
