@@ -18,6 +18,10 @@ const bird = {
     dead: false,
 }
 let gameStarted = false
+let password = ""
+function updatePassword() {
+    document.getElementById("password").value = password
+}
 const keyZones = [
     {
         done: false,
@@ -121,6 +125,10 @@ function update() {
                                 ((canvas.height - 112) / zone.zones.length)
                     if (activated) {
                         console.log(subZone)
+                        if (subZone.type == "char") {
+                            password += subZone.char
+                            updatePassword()
+                        }
                     }
                 })
                 zone.done = true
