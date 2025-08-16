@@ -54,7 +54,7 @@ function draw() {
     ctx.restore()
     keyZones.forEach((zone) => {
         ctx.fillStyle = "#2ba0a966"
-        zone.zones.forEach((subZone, i) => {
+        zone.zones.forEach((_, i) => {
             ctx.fillRect(
                 zone.x,
                 i * ((canvas.height - 112) / zone.zones.length),
