@@ -31,7 +31,7 @@ function addZone(zones) {
     keyZones.push({ done: false, x: canvas.width, zones })
 }
 const keyZones = []
-addZone(defaultZoneGroup)
+if (flappyMode == "login") addZone(defaultZoneGroup)
 function draw() {
     requestAnimationFrame(draw)
     ctx.clearRect(0, 0, canvas.width, canvas.height)
