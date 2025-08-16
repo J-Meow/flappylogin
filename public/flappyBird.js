@@ -127,12 +127,14 @@ function update() {
                         if (subZone.type == "char") {
                             password += subZone.char
                             updatePassword()
+                            addZone(defaultZoneGroup)
                         }
                         if (subZone.type == "backspace") {
                             if (password.length) {
                                 password = password.slice(0, -1)
                                 updatePassword()
                             }
+                            addZone(defaultZoneGroup)
                         }
                     }
                 })
