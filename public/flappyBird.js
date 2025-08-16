@@ -48,3 +48,8 @@ function update() {
 }
 draw()
 update()
+addEventListener("keydown", (ev) => {
+    if (ev.code == "Space") {
+        bird.yVelocity = 0.4
+    }
+})
