@@ -111,7 +111,7 @@ function update() {
             bird.yVelocity = -100
             return
         }
-        keyZones = keyZones.map((zone) => {
+        keyZones.forEach((zone) => {
             zone.x -= movementX
             if (!zone.done && zone.x <= 60) {
                 zone.zones.forEach((subZone, i) => {
