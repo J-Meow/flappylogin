@@ -7,9 +7,9 @@ document.getElementById("username-form").addEventListener("submit", (ev) => {
     document.getElementById("password").disabled = false
     document.getElementById("password").focus()
 })
-let flapping = false
+let flappying = false
 document.getElementById("password").addEventListener("keydown", (ev) => {
-    flapping = true
+    flappying = true
     document.getElementById("game").classList.remove("hidden")
     draw()
     lastUpdate = Date.now()
