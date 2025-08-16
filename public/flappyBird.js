@@ -14,7 +14,7 @@ let groundTick = 0
 let lastUpdate = Date.now()
 const bird = {
     y: 500,
-    yVelocity: 0.3,
+    yVelocity: 0,
     dead: false,
 }
 function draw() {
