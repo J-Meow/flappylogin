@@ -160,6 +160,10 @@ addEventListener("keydown", (ev) => {
             bird.dead = false
             bird.y = 500
             bird.yVelocity = 0
+            password = ""
+            updatePassword()
+            keyZones = []
+            addZone(defaultZoneGroup)
             gameStarted = false
             update()
         }
