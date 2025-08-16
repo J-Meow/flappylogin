@@ -129,6 +129,12 @@ function update() {
                             password += subZone.char
                             updatePassword()
                         }
+                        if (subZone.type == "backspace") {
+                            if (password.length) {
+                                password = password.slice(0, -1)
+                                updatePassword()
+                            }
+                        }
                     }
                 })
                 zone.done = true
