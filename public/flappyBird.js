@@ -43,7 +43,7 @@ function update() {
     groundTick = (groundTick + movementX) % 24
     lastUpdate = Date.now()
     bird.y += bird.yVelocity * millisecondsSinceUpdate
-    bird.yVelocity -= millisecondsSinceUpdate / 1500
+    bird.yVelocity -= millisecondsSinceUpdate / 800
     setTimeout(update, 1000 / 60)
 }
 draw()
