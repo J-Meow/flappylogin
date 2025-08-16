@@ -20,11 +20,25 @@
         <h1>Flappy Bird - Login</h1>
         <form id="username-form">
             <label for="username">Username</label>
-            <input name="username" type="text" id="username" />
+            <input
+                name="username"
+                type="text"
+                autocomplete="off"
+                id="username"
+            />
             <input type="submit" value="Continue" />
         </form>
-        <label for="password">Password</label>
-        <input name="password" type="text" readonly id="password" disabled />
+        <div>
+            <label for="password">Password</label>
+            <input
+                name="password"
+                type="text"
+                readonly
+                autocomplete="off"
+                id="password"
+                disabled
+            />
+        </div>
         <canvas id="game" width="1000" height="1000" class="hidden"></canvas>
         <script src="/flappyBird.js"></script>
         <script src="login.js"></script>
