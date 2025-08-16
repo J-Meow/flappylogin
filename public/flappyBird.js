@@ -30,7 +30,7 @@ const defaultZoneGroup = [
 function addZone(zones) {
     keyZones.push({ done: false, x: canvas.width, zones })
 }
-const keyZones = []
+let keyZones = []
 if (flappyMode == "login") addZone(defaultZoneGroup)
 function draw() {
     requestAnimationFrame(draw)
@@ -111,7 +111,7 @@ function update() {
             bird.yVelocity = -100
             return
         }
-        keyZones.map((zone) => {
+        keyZones = keyZones.map((zone) => {
             zone.x -= movementX
             if (!zone.done && zone.x <= 60) {
                 zone.zones.forEach((subZone, i) => {
