@@ -8,9 +8,13 @@ function imageAsset(name) {
 const assets = {
     base: imageAsset("base"),
     dayBG: imageAsset("background-day"),
+    bird: imageAsset("yellowbird-upflap"),
 }
 let groundTick = 0
 let lastUpdate = Date.now()
+const bird = {
+    y: 500,
+}
 function draw() {
     requestAnimationFrame(draw)
     ctx.clearRect(0, 0, canvas.width, canvas.height)
@@ -26,6 +30,7 @@ function draw() {
             canvas.height - 112,
         )
     }
+    ctx.drawImage(assets.bird, 50, bird.y)
 }
 function update() {
     const millisecondsSinceUpdate = Date.now() - lastUpdate
