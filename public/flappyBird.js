@@ -14,6 +14,7 @@ let groundTick = 0
 let lastUpdate = Date.now()
 const bird = {
     y: 500,
+    yVelocity: 0.3,
 }
 function draw() {
     requestAnimationFrame(draw)
@@ -37,6 +38,8 @@ function update() {
     const movementX = millisecondsSinceUpdate / 4
     groundTick = (groundTick + movementX) % 24
     lastUpdate = Date.now()
+    bird.y += bird.yVelocity * millisecondsSinceUpdate
+    bird.yVelocity -= millisecondsSinceUpdate / 1500
     setTimeout(update, 1000 / 60)
 }
 draw()
