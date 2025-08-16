@@ -9,12 +9,23 @@
             }
             canvas {
                 image-rendering: pixelated;
+                max-height: 70vh;
+            }
+            .hidden {
+                display: none;
             }
         </style>
     </head>
     <body>
         <h1>Flappy Bird - Login</h1>
-        <canvas id="game" width="1000" height="1000"></canvas>
+        <form id="username-form">
+            <label for="username">Username</label>
+            <input name="username" type="text" id="username" />
+            <input type="submit" value="Continue" />
+        </form>
+        <label for="password">Password</label>
+        <input name="password" type="password" id="password" disabled />
+        <canvas id="game" width="1000" height="1000" class="hidden"></canvas>
         <script src="/flappyBird.js"></script>
     </body>
 </html>
