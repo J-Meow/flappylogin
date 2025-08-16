@@ -53,8 +53,6 @@ function update() {
     }
     setTimeout(update, 1000 / 60)
 }
-draw()
-update()
 addEventListener("keydown", (ev) => {
     if (!bird.dead && ev.code == "Space") {
         bird.yVelocity = 0.4
