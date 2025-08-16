@@ -56,17 +56,25 @@ function update() {
     }
     setTimeout(update, 1000 / 60)
 }
+let spacePressed = false
 addEventListener("keydown", (ev) => {
-    if (!bird.dead && ev.code == "Space") {
-        if (!gameStarted) {
-            gameStarted = true
+    if (ev.code == "Space") {
+        if (spacePressed) return
+        spacePressed = true
+        if (!bird.dead) {
+            if (!gameStarted) {
+                gameStarted = true
+            }
+            bird.yVelocity = 0.4
+        } else {
+            bird.dead = false
+            bird.y = 500
+            bird.yVelocity = 0
+            gameStarted = false
+            update()
         }
-        bird.yVelocity = 0.4
-    } else if (ev.code == "Space") {
-        bird.dead = false
-        bird.y = 500
-        bird.yVelocity = 0
-        gameStarted = false
-        update()
     }
+})
+addEventListener("keyup", (ev) => {
+    if (ev.code == "Space") spacePressed = false
 })
