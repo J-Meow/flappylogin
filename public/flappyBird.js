@@ -33,7 +33,7 @@ function draw() {
     }
     ctx.save()
     ctx.translate(50, canvas.height - bird.y)
-    ctx.rotate(-bird.yVelocity * 2)
+    ctx.rotate(Math.min(-bird.yVelocity * 2, Math.PI / 2))
     ctx.drawImage(assets.bird, -17, -12)
     ctx.restore()
 }
