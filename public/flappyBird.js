@@ -58,6 +58,7 @@ function update() {
 }
 let spacePressed = false
 addEventListener("keydown", (ev) => {
+    if (flappyMode == "login" && !flappying) return
     if (ev.code == "Space") {
         if (spacePressed) return
         spacePressed = true
