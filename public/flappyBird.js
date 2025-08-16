@@ -17,6 +17,7 @@ const bird = {
     yVelocity: 0,
     dead: false,
 }
+let gameStarted = false
 function draw() {
     requestAnimationFrame(draw)
     ctx.clearRect(0, 0, canvas.width, canvas.height)
@@ -43,18 +44,29 @@ function update() {
     const movementX = millisecondsSinceUpdate / 4
     groundTick = (groundTick + movementX) % 24
     lastUpdate = Date.now()
-    bird.y += bird.yVelocity * millisecondsSinceUpdate
-    bird.yVelocity -= millisecondsSinceUpdate / 800
-    if (bird.y <= 128) {
-        bird.dead = true
-        bird.y = 128
-        bird.yVelocity = -100
-        return
+    if (gameStarted) {
+        bird.y += bird.yVelocity * millisecondsSinceUpdate
+        bird.yVelocity -= millisecondsSinceUpdate / 800
+        if (bird.y <= 128) {
+            bird.dead = true
+            bird.y = 128
+            bird.yVelocity = -100
+            return
+        }
     }
     setTimeout(update, 1000 / 60)
 }
 addEventListener("keydown", (ev) => {
     if (!bird.dead && ev.code == "Space") {
+        if (!gameStarted) {
+            gameStarted = true
+        }
         bird.yVelocity = 0.4
+    } else if (ev.code == "Space") {
+        bird.dead = false
+        bird.y = 500
+        bird.yVelocity = 0
+        gameStarted = false
+        update()
     }
 })
