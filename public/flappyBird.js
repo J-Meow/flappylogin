@@ -18,6 +18,16 @@ const bird = {
     dead: false,
 }
 let gameStarted = false
+const keyZones = [
+    {
+        x: canvas.width,
+        zones: [
+            { type: "char", char: "a" },
+            { type: "char", char: "z" },
+            { type: "backspace" },
+        ],
+    },
+]
 function draw() {
     requestAnimationFrame(draw)
     ctx.clearRect(0, 0, canvas.width, canvas.height)
@@ -38,6 +48,22 @@ function draw() {
     ctx.rotate(Math.min(-bird.yVelocity * 2, Math.PI / 2))
     ctx.drawImage(assets.bird, -17, -12)
     ctx.restore()
+    keyZones.forEach((zone) => {
+        ctx.fillStyle = "#2ba0a966"
+        zone.zones.forEach((subZone, i) => {
+            ctx.fillRect(
+                zone.x,
+                i * ((canvas.height - 112) / zone.zones.length),
+                canvas.height - bird.y <
+                    (i + 1) * ((canvas.height - 112) / zone.zones.length) &&
+                    canvas.height - bird.y >
+                        (i + 0) * ((canvas.height - 112) / zone.zones.length)
+                    ? 80
+                    : 60,
+                (canvas.height - 112) / zone.zones.length,
+            )
+        })
+    })
     if (!gameStarted && flappyMode == "login") {
         ctx.fillStyle = "black"
         ctx.textAlign = "center"
@@ -81,6 +107,10 @@ function update() {
             bird.yVelocity = -100
             return
         }
+        keyZones.map((zone) => {
+            zone.x -= movementX
+            return zone
+        })
     }
     setTimeout(update, 1000 / 144)
 }
