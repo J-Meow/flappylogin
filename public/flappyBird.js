@@ -31,7 +31,11 @@ function draw() {
             canvas.height - 112,
         )
     }
-    ctx.drawImage(assets.bird, 50, canvas.height - bird.y)
+    ctx.save()
+    ctx.translate(50, canvas.height - bird.y)
+    ctx.rotate(-bird.yVelocity * 2)
+    ctx.drawImage(assets.bird, -17, -12)
+    ctx.restore()
 }
 function update() {
     const millisecondsSinceUpdate = Date.now() - lastUpdate
