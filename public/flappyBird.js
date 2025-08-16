@@ -15,6 +15,7 @@ let lastUpdate = Date.now()
 const bird = {
     y: 500,
     yVelocity: 0.3,
+    dead: false,
 }
 function draw() {
     requestAnimationFrame(draw)
@@ -44,12 +45,18 @@ function update() {
     lastUpdate = Date.now()
     bird.y += bird.yVelocity * millisecondsSinceUpdate
     bird.yVelocity -= millisecondsSinceUpdate / 800
+    if (bird.y <= 128) {
+        bird.dead = true
+        bird.y = 128
+        bird.yVelocity = -100
+        return
+    }
     setTimeout(update, 1000 / 60)
 }
 draw()
 update()
 addEventListener("keydown", (ev) => {
-    if (ev.code == "Space") {
+    if (!bird.dead && ev.code == "Space") {
         bird.yVelocity = 0.4
     }
 })
