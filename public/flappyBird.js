@@ -22,17 +22,16 @@ let password = ""
 function updatePassword() {
     document.getElementById("password").value = password
 }
-const keyZones = [
-    {
-        done: false,
-        x: canvas.width,
-        zones: [
-            { type: "char", char: "a" },
-            { type: "char", char: "z" },
-            { type: "backspace" },
-        ],
-    },
+const defaultZoneGroup = [
+    { type: "char", char: "a" },
+    { type: "char", char: "z" },
+    { type: "backspace" },
 ]
+function addZone(zones) {
+    keyZones.push({ done: false, x: canvas.width, zones })
+}
+const keyZones = []
+addZone(defaultZoneGroup)
 function draw() {
     requestAnimationFrame(draw)
     ctx.clearRect(0, 0, canvas.width, canvas.height)
