@@ -54,7 +54,7 @@ function update() {
             return
         }
     }
-    setTimeout(update, 1000 / 60)
+    setTimeout(update, 1000 / 144)
 }
 let spacePressed = false
 addEventListener("keydown", (ev) => {
