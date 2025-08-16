@@ -38,6 +38,34 @@ function draw() {
     ctx.rotate(Math.min(-bird.yVelocity * 2, Math.PI / 2))
     ctx.drawImage(assets.bird, -17, -12)
     ctx.restore()
+    if (!gameStarted && flappyMode == "login") {
+        ctx.fillStyle = "black"
+        ctx.textAlign = "center"
+        ctx.textBaseline = "middle"
+        ctx.font = "60px sans-serif"
+        ctx.fillText("Flappy Login", canvas.width / 2, canvas.height / 3)
+        ctx.font = "40px sans-serif"
+        ctx.fillText(
+            "Enter your password by playing Flappy Bird.",
+            canvas.width / 2,
+            canvas.height / 3 + 60,
+        )
+        ctx.font = "30px sans-serif"
+        ctx.fillText(
+            "Press Space to start",
+            canvas.width / 2,
+            canvas.height / 2,
+        )
+        ctx.fillStyle = "#efe9a6"
+        ctx.font = "20px sans-serif"
+        ctx.textAlign = "left"
+        ctx.textBaseline = "bottom"
+        ctx.fillText(
+            "yes i know this font doesn't fit i'll fix it later",
+            2,
+            canvas.height - 2,
+        )
+    }
 }
 function update() {
     const millisecondsSinceUpdate = Date.now() - lastUpdate
