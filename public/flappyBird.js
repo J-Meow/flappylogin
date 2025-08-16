@@ -20,6 +20,7 @@ const bird = {
 let gameStarted = false
 const keyZones = [
     {
+        done: false,
         x: canvas.width,
         zones: [
             { type: "char", char: "a" },
@@ -109,6 +110,21 @@ function update() {
         }
         keyZones.map((zone) => {
             zone.x -= movementX
+            if (!zone.done && zone.x <= 60) {
+                zone.zones.forEach((subZone, i) => {
+                    const activated =
+                        canvas.height - bird.y <
+                            (i + 1) *
+                                ((canvas.height - 112) / zone.zones.length) &&
+                        canvas.height - bird.y >
+                            (i + 0) *
+                                ((canvas.height - 112) / zone.zones.length)
+                    if (activated) {
+                        console.log(subZone)
+                    }
+                })
+                zone.done = true
+            }
             return zone
         })
     }
