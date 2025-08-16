@@ -30,7 +30,7 @@ function draw() {
             canvas.height - 112,
         )
     }
-    ctx.drawImage(assets.bird, 50, bird.y)
+    ctx.drawImage(assets.bird, 50, canvas.height - bird.y)
 }
 function update() {
     const millisecondsSinceUpdate = Date.now() - lastUpdate
