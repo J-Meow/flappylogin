@@ -31,7 +31,7 @@ const groups = {
         { type: "char", char: "e" },
         { type: "char", char: "f" },
         { type: "char", char: "g" },
-        { type: "changeZone", target: "alpha2" },
+        { type: "changeZone", target: "alpha2", label: "more" },
     ],
     alpha2: [
         { type: "char", char: "h" },
@@ -41,7 +41,7 @@ const groups = {
         { type: "char", char: "l" },
         { type: "char", char: "m" },
         { type: "char", char: "n" },
-        { type: "changeZone", target: "alpha3" },
+        { type: "changeZone", target: "alpha3", label: "more" },
     ],
     alpha3: [
         { type: "char", char: "o" },
@@ -51,7 +51,7 @@ const groups = {
         { type: "char", char: "s" },
         { type: "char", char: "t" },
         { type: "char", char: "u" },
-        { type: "changeZone", target: "alpha4" },
+        { type: "changeZone", target: "alpha4", label: "more" },
     ],
     alpha4: [
         { type: "char", char: "v" },
@@ -62,8 +62,8 @@ const groups = {
     ],
 }
 const defaultZoneGroup = [
-    { type: "changeZone", target: "alpha1" },
-    { type: "backspace" },
+    { type: "changeZone", target: "alpha1", label: "abc" },
+    { type: "backspace", label: "<---" },
 ]
 function addZone(zones) {
     keyZones.push({ done: false, x: canvas.width, zones })
@@ -91,8 +91,8 @@ function draw() {
     ctx.drawImage(assets.bird, -17, -12)
     ctx.restore()
     keyZones.forEach((zone) => {
-        ctx.fillStyle = "#2ba0a966"
-        zone.zones.forEach((_, i) => {
+        zone.zones.forEach((subZone, i) => {
+            ctx.fillStyle = "#2ba0a966"
             ctx.fillRect(
                 zone.x,
                 i * ((canvas.height - 112) / zone.zones.length),
@@ -103,6 +103,23 @@ function draw() {
                     ? 80
                     : 60,
                 (canvas.height - 112) / zone.zones.length,
+            )
+            ctx.fillStyle = "black"
+            ctx.textAlign = "left"
+            ctx.textBaseline = "bottom"
+            let fontSize = 30
+            let text = ""
+            if (subZone.type == "char") {
+                text = subZone.char
+            }
+            if ("label" in subZone) {
+                text = subZone.label
+            }
+            ctx.font = fontSize + "px sans-serif"
+            ctx.fillText(
+                text,
+                zone.x + 10,
+                ((i + 1) * (canvas.height - 112)) / zone.zones.length - 10,
             )
         })
     })
