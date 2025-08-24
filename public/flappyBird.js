@@ -22,9 +22,47 @@ let password = ""
 function updatePassword() {
     document.getElementById("password").value = password
 }
+const groups = {
+    alpha1: [
+        { type: "char", char: "a" },
+        { type: "char", char: "b" },
+        { type: "char", char: "c" },
+        { type: "char", char: "d" },
+        { type: "char", char: "e" },
+        { type: "char", char: "f" },
+        { type: "char", char: "g" },
+        { type: "changeZone", target: "alpha2" },
+    ],
+    alpha2: [
+        { type: "char", char: "h" },
+        { type: "char", char: "i" },
+        { type: "char", char: "j" },
+        { type: "char", char: "k" },
+        { type: "char", char: "l" },
+        { type: "char", char: "m" },
+        { type: "char", char: "n" },
+        { type: "changeZone", target: "alpha3" },
+    ],
+    alpha3: [
+        { type: "char", char: "o" },
+        { type: "char", char: "p" },
+        { type: "char", char: "q" },
+        { type: "char", char: "r" },
+        { type: "char", char: "s" },
+        { type: "char", char: "t" },
+        { type: "char", char: "u" },
+        { type: "changeZone", target: "alpha4" },
+    ],
+    alpha4: [
+        { type: "char", char: "v" },
+        { type: "char", char: "w" },
+        { type: "char", char: "x" },
+        { type: "char", char: "y" },
+        { type: "char", char: "z" },
+    ],
+}
 const defaultZoneGroup = [
-    { type: "char", char: "a" },
-    { type: "char", char: "z" },
+    { type: "changeZone", target: "alpha1" },
     { type: "backspace" },
 ]
 function addZone(zones) {
@@ -128,6 +166,9 @@ function update() {
                             password += subZone.char
                             updatePassword()
                             addZone(defaultZoneGroup)
+                        }
+                        if (subZone.type == "changeZone") {
+                            addZone(groups[subZone.target])
                         }
                         if (subZone.type == "backspace") {
                             if (password.length) {
