@@ -266,6 +266,7 @@ function update() {
             }
             return zone
         })
+        keyZones = keyZones.filter((z) => z.x > -200)
     }
     setTimeout(update, 1000 / 144)
 }
