@@ -97,12 +97,27 @@ const groups = {
         { type: "char", char: "Y" },
         { type: "char", char: "Z" },
     ],
-    symbolMenu: [{ type: "changeZone", target: "dashes", label: "-_-" }],
+    symbolMenu: [
+        { type: "changeZone", target: "dashes", label: "-_-" },
+        { type: "changeZone", target: "numberRowSymbols", label: "!@#$" },
+    ],
     dashes: [
         { type: "char", char: "-" },
         { type: "char", char: "_" },
         { type: "char", char: "–" },
         { type: "char", char: "—" },
+    ],
+    numberRowSymbols: [
+        { type: "char", char: "!" },
+        { type: "char", char: "@" },
+        { type: "char", char: "#" },
+        { type: "char", char: "$" },
+        { type: "char", char: "%" },
+        { type: "char", char: "^" },
+        { type: "char", char: "&" },
+        { type: "char", char: "*" },
+        { type: "char", char: "(" },
+        { type: "char", char: ")" },
     ],
 }
 const defaultZoneGroup = [
