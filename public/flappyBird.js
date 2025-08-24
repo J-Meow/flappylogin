@@ -97,10 +97,18 @@ const groups = {
         { type: "char", char: "Y" },
         { type: "char", char: "Z" },
     ],
+    symbolMenu: [{ type: "changeZone", target: "dashes", label: "-_-" }],
+    dashes: [
+        { type: "char", char: "-" },
+        { type: "char", char: "_" },
+        { type: "char", char: "–" },
+        { type: "char", char: "—" },
+    ],
 }
 const defaultZoneGroup = [
     { type: "changeZone", target: "alpha1", label: "abc" },
     { type: "changeZone", target: "Alpha1", label: "ABC" },
+    { type: "changeZone", target: "symbolMenu", label: "Symbols" },
     { type: "backspace", label: "<---" },
 ]
 function addZone(zones) {
