@@ -24,6 +24,7 @@ function updatePassword() {
 }
 const groups = {
     alpha1: [
+        { type: "changeZone", target: "alpha2", label: "more" },
         { type: "char", char: "a" },
         { type: "char", char: "b" },
         { type: "char", char: "c" },
@@ -31,9 +32,9 @@ const groups = {
         { type: "char", char: "e" },
         { type: "char", char: "f" },
         { type: "char", char: "g" },
-        { type: "changeZone", target: "alpha2", label: "more" },
     ],
     alpha2: [
+        { type: "changeZone", target: "alpha3", label: "more" },
         { type: "char", char: "h" },
         { type: "char", char: "i" },
         { type: "char", char: "j" },
@@ -41,9 +42,9 @@ const groups = {
         { type: "char", char: "l" },
         { type: "char", char: "m" },
         { type: "char", char: "n" },
-        { type: "changeZone", target: "alpha3", label: "more" },
     ],
     alpha3: [
+        { type: "changeZone", target: "alpha4", label: "more" },
         { type: "char", char: "o" },
         { type: "char", char: "p" },
         { type: "char", char: "q" },
@@ -51,7 +52,6 @@ const groups = {
         { type: "char", char: "s" },
         { type: "char", char: "t" },
         { type: "char", char: "u" },
-        { type: "changeZone", target: "alpha4", label: "more" },
     ],
     alpha4: [
         { type: "char", char: "v" },
@@ -61,6 +61,7 @@ const groups = {
         { type: "char", char: "z" },
     ],
     Alpha1: [
+        { type: "changeZone", target: "Alpha2", label: "more" },
         { type: "char", char: "A" },
         { type: "char", char: "B" },
         { type: "char", char: "C" },
@@ -68,9 +69,9 @@ const groups = {
         { type: "char", char: "E" },
         { type: "char", char: "F" },
         { type: "char", char: "G" },
-        { type: "changeZone", target: "Alpha2", label: "more" },
     ],
     Alpha2: [
+        { type: "changeZone", target: "Alpha3", label: "more" },
         { type: "char", char: "H" },
         { type: "char", char: "I" },
         { type: "char", char: "J" },
@@ -78,9 +79,9 @@ const groups = {
         { type: "char", char: "L" },
         { type: "char", char: "M" },
         { type: "char", char: "N" },
-        { type: "changeZone", target: "Alpha3", label: "more" },
     ],
     Alpha3: [
+        { type: "changeZone", target: "Alpha4", label: "more" },
         { type: "char", char: "O" },
         { type: "char", char: "P" },
         { type: "char", char: "Q" },
@@ -88,7 +89,6 @@ const groups = {
         { type: "char", char: "S" },
         { type: "char", char: "T" },
         { type: "char", char: "U" },
-        { type: "changeZone", target: "Alpha4", label: "more" },
     ],
     Alpha4: [
         { type: "char", char: "V" },
