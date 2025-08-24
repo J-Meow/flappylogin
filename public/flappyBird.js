@@ -100,6 +100,7 @@ const groups = {
     symbolMenu: [
         { type: "changeZone", target: "dashes", label: "-_-" },
         { type: "changeZone", target: "numberRowSymbols", label: "!@#$" },
+        { type: "char", char: " ", label: "Space" },
     ],
     dashes: [
         { type: "char", char: "-" },
