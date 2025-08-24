@@ -60,9 +60,47 @@ const groups = {
         { type: "char", char: "y" },
         { type: "char", char: "z" },
     ],
+    Alpha1: [
+        { type: "char", char: "A" },
+        { type: "char", char: "B" },
+        { type: "char", char: "C" },
+        { type: "char", char: "D" },
+        { type: "char", char: "E" },
+        { type: "char", char: "F" },
+        { type: "char", char: "G" },
+        { type: "changeZone", target: "Alpha2", label: "more" },
+    ],
+    Alpha2: [
+        { type: "char", char: "H" },
+        { type: "char", char: "I" },
+        { type: "char", char: "J" },
+        { type: "char", char: "K" },
+        { type: "char", char: "L" },
+        { type: "char", char: "M" },
+        { type: "char", char: "N" },
+        { type: "changeZone", target: "Alpha3", label: "more" },
+    ],
+    Alpha3: [
+        { type: "char", char: "O" },
+        { type: "char", char: "P" },
+        { type: "char", char: "Q" },
+        { type: "char", char: "R" },
+        { type: "char", char: "S" },
+        { type: "char", char: "T" },
+        { type: "char", char: "U" },
+        { type: "changeZone", target: "Alpha4", label: "more" },
+    ],
+    Alpha4: [
+        { type: "char", char: "V" },
+        { type: "char", char: "W" },
+        { type: "char", char: "X" },
+        { type: "char", char: "Y" },
+        { type: "char", char: "Z" },
+    ],
 }
 const defaultZoneGroup = [
     { type: "changeZone", target: "alpha1", label: "abc" },
+    { type: "changeZone", target: "Alpha1", label: "ABC" },
     { type: "backspace", label: "<---" },
 ]
 function addZone(zones) {
