@@ -189,7 +189,7 @@ function draw() {
             if ("label" in subZone) {
                 text = subZone.label
             }
-            ctx.font = fontSize + "px sans-serif"
+            ctx.font = fontSize + 'px "Jersey 10"'
             ctx.fillText(
                 text,
                 zone.x + 10,
@@ -201,28 +201,19 @@ function draw() {
         ctx.fillStyle = "black"
         ctx.textAlign = "center"
         ctx.textBaseline = "middle"
-        ctx.font = "60px sans-serif"
+        ctx.font = '60px "Jersey 10"'
         ctx.fillText("Flappy Login", canvas.width / 2, canvas.height / 3)
-        ctx.font = "40px sans-serif"
+        ctx.font = '40px "Jersey 10"'
         ctx.fillText(
             "Enter your password by playing Flappy Bird.",
             canvas.width / 2,
             canvas.height / 3 + 60,
         )
-        ctx.font = "30px sans-serif"
+        ctx.font = '30px "Jersey 10"'
         ctx.fillText(
             "Press Space to start",
             canvas.width / 2,
             canvas.height / 2,
-        )
-        ctx.fillStyle = "#efe9a6"
-        ctx.font = "20px sans-serif"
-        ctx.textAlign = "left"
-        ctx.textBaseline = "bottom"
-        ctx.fillText(
-            "yes i know this font doesn't fit i'll fix it later",
-            2,
-            canvas.height - 2,
         )
     }
 }
