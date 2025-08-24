@@ -20,7 +20,13 @@ const bird = {
 let gameStarted = false
 let password = ""
 function updatePassword() {
-    document.getElementById("password").value = password
+    if (!password.length) {
+        document.getElementById("password").value = ""
+        return
+    }
+    document.getElementById("password").value =
+        password.slice(0, password.length - 1).replaceAll(/./g, "•") +
+        password[password.length - 1]
 }
 const groups = {
     alpha1: [
