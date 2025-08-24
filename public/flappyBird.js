@@ -119,10 +119,23 @@ const groups = {
         { type: "char", char: "(" },
         { type: "char", char: ")" },
     ],
+    numbers: [
+        { type: "char", char: "0" },
+        { type: "char", char: "1" },
+        { type: "char", char: "2" },
+        { type: "char", char: "3" },
+        { type: "char", char: "4" },
+        { type: "char", char: "5" },
+        { type: "char", char: "6" },
+        { type: "char", char: "7" },
+        { type: "char", char: "8" },
+        { type: "char", char: "9" },
+    ],
 }
 const defaultZoneGroup = [
     { type: "changeZone", target: "alpha1", label: "abc" },
     { type: "changeZone", target: "Alpha1", label: "ABC" },
+    { type: "changeZone", target: "numbers", label: "123" },
     { type: "changeZone", target: "symbolMenu", label: "Symbols" },
     { type: "backspace", label: "<---" },
 ]
