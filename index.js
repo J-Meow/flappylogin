@@ -3,12 +3,26 @@ dotenv.config()
 import bcrypt from "bcrypt"
 import express from "express"
 import postgres from "postgres"
+import session from "express-session"
+import memoryStore from "memorystore"
+const MemoryStore = memoryStore(session)
 const app = express()
 const port = 3000
 const sql = postgres()
 
 app.use("/", express.static("public"))
 app.use(express.json())
+app.use(
+    session({
+        secret: process.env.SESSIONSECRET,
+        resave: false,
+        saveUninitialized: true,
+        cookie: { secure: true, httpOnly: true },
+        store: new MemoryStore({
+            checkPeriod: 86400000,
+        }),
+    }),
+)
 
 //app.get("/", (req, res) => {
 //    res.send("Hello World!")
