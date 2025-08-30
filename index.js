@@ -17,7 +17,7 @@ app.use(
         secret: process.env.SESSIONSECRET,
         resave: false,
         saveUninitialized: true,
-        cookie: { secure: true, httpOnly: true },
+        cookie: { secure: false, httpOnly: true },
         store: new MemoryStore({
             checkPeriod: 86400000,
         }),
@@ -34,9 +34,11 @@ app.post("/api/signup", async (req, res) => {
     if (userCheck.length) {
         return res.status(400).json({ ok: false, error: "Username is taken" })
     }
-    console.log(
-        await sql`INSERT INTO "public"."users"("name", "password_hash") VALUES(${req.body.username}, ${await bcrypt.hash(req.body.password, 10)}) RETURNING "id"`,
-    )
+    let resp =
+        await sql`INSERT INTO "public"."users"("name", "password_hash") VALUES(${req.body.username}, ${await bcrypt.hash(req.body.password, 10)}) RETURNING "id"`
+    if (resp.length && resp[0].id) {
+        req.session.userId = user.id
+    }
     return res.json({ ok: true })
 })
 
@@ -54,6 +56,7 @@ app.post("/api/login", async (req, res) => {
             .status(400)
             .json({ ok: false, error: "Incorrect username or password" })
     }
+    req.session.userId = user.id
     return res.json({ ok: true })
 })
 
