@@ -19,6 +19,7 @@ const bird = {
 }
 let gameStarted = false
 let password = ""
+let submitted = false
 function updatePassword() {
     if (!password.length) {
         document.getElementById("password").value = ""
@@ -155,6 +156,9 @@ if (flappyMode == "login") addZone(defaultZoneGroup)
 function draw() {
     requestAnimationFrame(draw)
     ctx.clearRect(0, 0, canvas.width, canvas.height)
+    if (submitted) {
+        return
+    }
     for (let i = 0; i <= Math.ceil(canvas.width / 288); i++) {
         ctx.drawImage(assets.dayBG, i * 288, canvas.height - 512)
     }
@@ -226,6 +230,9 @@ function draw() {
     }
 }
 function update() {
+    if (submitted) {
+        return
+    }
     const millisecondsSinceUpdate = Date.now() - lastUpdate
     const movementX = millisecondsSinceUpdate / 4
     groundTick = (groundTick + movementX) % 24
@@ -268,16 +275,28 @@ function update() {
                             addZone(defaultZoneGroup)
                         }
                         if (subZone.type == "submit") {
-                            fetch("/api/login", {
-                                method: "POST",
-                                headers: { "Content-Type": "application/json" },
-                                body: JSON.stringify({
-                                    username:
-                                        document.getElementById("username")
-                                            .value,
-                                    password,
-                                }),
-                            })
+                            submitted = true
+                            ;(async () => {
+                                const res = await fetch("/api/login", {
+                                    method: "POST",
+                                    headers: {
+                                        "Content-Type": "application/json",
+                                    },
+                                    body: JSON.stringify({
+                                        username:
+                                            document.getElementById("username")
+                                                .value,
+                                        password,
+                                    }),
+                                })
+                                const json = await res.json()
+                                if (!json.ok) {
+                                    alert("Error: " + json.error)
+                                    location.reload()
+                                } else {
+                                    alert("Logged in")
+                                }
+                            })()
                         }
                     }
                 })
