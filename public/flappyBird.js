@@ -144,6 +144,7 @@ const defaultZoneGroup = [
     { type: "changeZone", target: "Alpha1", label: "ABC" },
     { type: "changeZone", target: "numbers", label: "123" },
     { type: "changeZone", target: "symbolMenu", label: "Symbols" },
+    { type: "submit", label: "Submit" },
     { type: "backspace", label: "<---" },
 ]
 function addZone(zones) {
@@ -265,6 +266,18 @@ function update() {
                                 updatePassword()
                             }
                             addZone(defaultZoneGroup)
+                        }
+                        if (subZone.type == "submit") {
+                            fetch("/api/login", {
+                                method: "POST",
+                                headers: { "Content-Type": "application/json" },
+                                body: JSON.stringify({
+                                    username:
+                                        document.getElementById("username")
+                                            .value,
+                                    password,
+                                }),
+                            })
                         }
                     }
                 })
