@@ -20,6 +20,23 @@ app.post("/api/signup", async (req, res) => {
     )
 })
 
+app.post("/api/login", async (req, res) => {
+    const resp =
+        await sql`SELECT id, password_hash FROM public.users WHERE name=${req.body.username}`
+    if (resp.length != 1) {
+        return res
+            .status(400)
+            .json({ ok: false, error: "Incorrect username or password" })
+    }
+    const user = resp[0]
+    if (!(await bcrypt.compare(req.body.password, user.password_hash))) {
+        return res
+            .status(400)
+            .json({ ok: false, error: "Incorrect username or password" })
+    }
+    return res.json({ ok: true })
+})
+
 app.listen(port, () => {
     console.log(`Listening on port ${port}`)
 })
