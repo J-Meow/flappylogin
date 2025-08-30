@@ -1,5 +1,6 @@
 import dotenv from "dotenv"
 dotenv.config()
+import bcrypt from "bcrypt"
 import express from "express"
 import postgres from "postgres"
 const app = express()
@@ -13,8 +14,11 @@ app.use(express.json())
 //    res.send("Hello World!")
 //})
 
-app.post("/api/signup", (req, res) => {
+app.post("/api/signup", async (req, res) => {
     console.log(req.body)
+    console.log(
+        await sql`INSERT INTO "public"."users"("name", "password_hash") VALUES(${req.body.username}, ${await bcrypt.hash(req.body.password, 10)}) RETURNING "id"`,
+    )
 })
 
 app.listen(port, () => {
