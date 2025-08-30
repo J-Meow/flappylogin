@@ -15,9 +15,15 @@ app.use(express.json())
 //})
 
 app.post("/api/signup", async (req, res) => {
+    const userCheck =
+        await sql`SELECT id FROM public.users WHERE name=${req.body.username}`
+    if (userCheck.length) {
+        return res.status(400).json({ ok: false, error: "Username is taken" })
+    }
     console.log(
         await sql`INSERT INTO "public"."users"("name", "password_hash") VALUES(${req.body.username}, ${await bcrypt.hash(req.body.password, 10)}) RETURNING "id"`,
     )
+    return res.json({ ok: true })
 })
 
 app.post("/api/login", async (req, res) => {
