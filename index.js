@@ -15,7 +15,6 @@ app.use(express.json())
 //})
 
 app.post("/api/signup", async (req, res) => {
-    console.log(req.body)
     console.log(
         await sql`INSERT INTO "public"."users"("name", "password_hash") VALUES(${req.body.username}, ${await bcrypt.hash(req.body.password, 10)}) RETURNING "id"`,
     )
