@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Flappy Bird</title>
+        <meta charset="utf-8" />
+        <style>
+            html {
+                color-scheme: light dark;
+            }
+            canvas {
+                image-rendering: pixelated;
+                max-height: 70vh;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Flappy Bird</h1>
+        <canvas id="game" width="1000" height="1000"></canvas>
+        <script>
+            const flappyMode = "play"
+        </script>
+        <script src="/flappyBird.js"></script>
+        <script>
+            update()
+            draw()
+        </script>
+    </body>
+</html>

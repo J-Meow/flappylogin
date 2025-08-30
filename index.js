@@ -24,6 +24,13 @@ app.use(
     }),
 )
 
+function requireLogin(req, res, next) {
+    if (!req.session.userId) {
+        return res.redirect("/login")
+    }
+    next()
+}
+app.use("/play", requireLogin)
 //app.get("/", (req, res) => {
 //    res.send("Hello World!")
 //})
