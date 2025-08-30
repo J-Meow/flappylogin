@@ -1,6 +1,10 @@
+import dotenv from "dotenv"
+dotenv.config()
 import express from "express"
+import postgres from "postgres"
 const app = express()
 const port = 3000
+const sql = postgres()
 
 app.use("/", express.static("public"))
 app.use(express.json())
