@@ -5,13 +5,17 @@ import express from "express"
 import postgres from "postgres"
 import session from "express-session"
 import memoryStore from "memorystore"
+import path from "path"
+import { fileURLToPath } from "url"
+import { dirname } from "path"
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename)
 const MemoryStore = memoryStore(session)
 const app = express()
 const port = 3000
 const sql = postgres()
 
-app.use("/", express.static("public"))
-app.use(express.json())
 app.use(
     session({
         secret: process.env.SESSIONSECRET,
@@ -30,10 +34,15 @@ function requireLogin(req, res, next) {
     }
     next()
 }
+app.use(express.json())
+app.get("/", (req, res) => {
+    if (!req.session.userId) {
+        return res.sendFile(path.join(__dirname, "public/index.html"))
+    }
+    return res.sendFile(path.join(__dirname, "private/index.html"))
+})
+app.use("/", express.static("public"))
 app.use("/play", requireLogin)
-//app.get("/", (req, res) => {
-//    res.send("Hello World!")
-//})
 
 app.post("/api/signup", async (req, res) => {
     const userCheck =
