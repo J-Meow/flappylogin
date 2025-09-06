@@ -41,8 +41,8 @@ app.get("/", (req, res) => {
     }
     return res.sendFile(path.join(__dirname, "private/index.html"))
 })
-app.use("/", express.static("public"))
 app.use("/play", requireLogin)
+app.use("/", express.static("public"))
 
 app.post("/api/signup", async (req, res) => {
     const userCheck =
